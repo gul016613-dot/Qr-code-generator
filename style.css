@@ -118,3 +118,19 @@ button{
 }
 
 }
+.dark-mode {
+    background: #0f172a;
+    color: white;
+}
+
+.dark-mode .card,
+.dark-mode section {
+    background: #1e293b;
+    color: white;
+}
+
+.dark-mode input {
+    background: #0f172a;
+    color: white;
+    border: 1px solid #334155;
+}
