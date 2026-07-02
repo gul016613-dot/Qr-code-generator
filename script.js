@@ -1,16 +1,17 @@
-function generateQR() {
+let qr;
 
+function generateQR() {
     let qrContainer = document.getElementById("qrcode");
     let qrText = document.getElementById("qrText").value.trim();
 
     qrContainer.innerHTML = "";
 
     if (qrText === "") {
-        alert("Please enter text or URL.");
+        alert("Please enter text or URL");
         return;
     }
 
-    new QRCode(qrContainer, {
+    qr = new QRCode(qrContainer, {
         text: qrText,
         width: 250,
         height: 250,
@@ -21,19 +22,22 @@ function generateQR() {
 }
 
 function downloadQR() {
-
     let img = document.querySelector("#qrcode img");
     let canvas = document.querySelector("#qrcode canvas");
 
-    let source = img || canvas;
-
-    if (!source) {
-        alert("Please generate a QR Code first.");
+    if (!img && !canvas) {
+        alert("Please generate QR first");
         return;
     }
 
     let link = document.createElement("a");
+
+    if (img) {
+        link.href = img.src;
+    } else {
+        link.href = canvas.toDataURL("image/png");
+    }
+
     link.download = "qr-code.png";
-    link.href = source.src || canvas.toDataURL("image/png");
     link.click();
 }
