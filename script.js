@@ -57,3 +57,6 @@ function clearQR() {
     document.getElementById("qrText").value = "";
     document.getElementById("qrcode").innerHTML = "";
 }
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
