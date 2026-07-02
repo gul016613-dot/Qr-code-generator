@@ -41,3 +41,19 @@ function downloadQR() {
     link.download = "qr-code.png";
     link.click();
 }
+function copyText() {
+    let text = document.getElementById("qrText").value;
+
+    if (!text) {
+        alert("Nothing to copy!");
+        return;
+    }
+
+    navigator.clipboard.writeText(text);
+    alert("Text copied!");
+}
+
+function clearQR() {
+    document.getElementById("qrText").value = "";
+    document.getElementById("qrcode").innerHTML = "";
+}
